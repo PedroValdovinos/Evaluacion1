@@ -28,6 +28,14 @@ const routes: Routes = [
     canActivate: [IngresadoGuard]
 
   },
+  {
+    path: 'conductor',
+    loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule)
+  },
+  {
+    path: 'alumno',
+    loadChildren: () => import('./alumno/alumno.module').then( m => m.AlumnoPageModule)
+  },
 ];
 
 @NgModule({

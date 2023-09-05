@@ -10,27 +10,8 @@ export class InicioPage implements OnInit {
 
   constructor(public alertController: AlertController,
     public navCtrl: NavController) { }
-  ngOnInit() {
+  
+    ngOnInit() {
   }
 
-  async salir(){
-    const alert = await this.alertController.create({
-      header: 'Salir',
-      message: '¿Deberitas te quieres salir?',
-      buttons: [
-        {
-          text: 'No mejor no',
-          handler: () => {
-            
-          }
-        }, {
-          text: 'Sii',
-          handler: () => {
-            localStorage.removeItem('ingresado');
-            this.navCtrl.navigateRoot('login');
-          }
-        }
-      ]
-    });
-
-  }}
+}
