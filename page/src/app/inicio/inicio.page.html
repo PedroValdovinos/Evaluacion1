@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<h1>BIENVENIDO A TeLlevoApp</h1>
+<br>
+<h4>¿Como deseas ingresar?</h4>
+
+<ion-button [routerLink]="['/conductor']">
+  Conductor
+</ion-button>
+
+<ion-button [routerLink]="['/alumno']">
+  Alumno
+</ion-button>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button [routerLink]="['/login']">
+    Salir
+  </ion-button>
+  
+</ion-footer>
