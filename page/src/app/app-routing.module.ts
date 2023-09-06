@@ -30,11 +30,18 @@ const routes: Routes = [
   },
   {
     path: 'conductor',
-    loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule)
+    loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule),
+    canActivate: [IngresadoGuard]
   },
   {
     path: 'alumno',
-    loadChildren: () => import('./alumno/alumno.module').then( m => m.AlumnoPageModule)
+    loadChildren: () => import('./alumno/alumno.module').then( m => m.AlumnoPageModule),
+    canActivate: [IngresadoGuard]
+    
+  },
+  {
+    path: 'rpassword',
+    loadChildren: () => import('./rpassword/rpassword.module').then( m => m.RpasswordPageModule)
   },
 ];
 
