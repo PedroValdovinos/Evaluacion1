@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-     LOGIN
+  <ion-toolbar color="header">
+    <ion-title class="ion-text-center">
+     Login
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,17 +10,17 @@
   <ion-card>
     <ion-card-content>
       <form [formGroup]="formularioLogin">
-        <ion-item>
-          <ion-label position="floating">USERNAME</ion-label>
+        <ion-item >
+          <ion-label class="center" position="floating">Username</ion-label>
           <ion-input formControlName="nombre"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="floating">PASSWORD</ion-label>
+          <ion-label class="center" position="floating">password</ion-label>
           <ion-input formControlName="password" type="password"></ion-input>
         </ion-item>
       </form>
       <br>
-      <ion-button (click)="ingresar()">
+      <ion-button color="boton" class="btn" (click)="ingresar()">
         Ingresar
       </ion-button>
       <br>
@@ -31,7 +31,7 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-button [routerLink]="['/registro']">REGISTRATE</ion-button>
+  <ion-toolbar >
+    <ion-button color="boton" [routerLink]="['/registro']">REGISTRATE</ion-button>
   </ion-toolbar>
 </ion-footer>
