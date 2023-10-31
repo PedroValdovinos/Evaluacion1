@@ -23,8 +23,26 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content [fullscreen]="true">
-<ion-card>
-  <h1>Haaaaa</h1>
-</ion-card>
-</ion-content>
+  <ion-content>
+    <ion-card *ngFor="let viaje of getViajesMostrables()">
+      <ion-card-header color="boton" class="center">
+        {{ viaje.origen }} a {{ viaje.destino }}
+      </ion-card-header>
+      <ion-card-content>
+        <br>
+        <p>Fecha: {{ viaje.fecha }}</p>
+        <p>Hora de Salida: {{ viaje.hora }}</p>
+        <p>Costo: {{ viaje.costo }}</p>
+        <p>Asientos Disponibles: {{ viaje.asiento_disponible }}</p>
+     <br>
+        <h2 class="center">
+        Información Vehiculo
+      </h2>
+      <br>
+      <p>{{ viaje.marca }} {{ viaje.modelo }}</p>
+      <p>Patente: {{ viaje.patente }}</p>
+      <p>Color: {{ viaje.color }}</p>
+      </ion-card-content>
+
+      <ion-button color="boton" class="center" (click)="restarAsiento(viaje)">UNIRSE</ion-button>
+    </ion-card>

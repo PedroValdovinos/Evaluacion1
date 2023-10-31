@@ -41,7 +41,8 @@ const routes: Routes = [
   },
   {
     path: 'rpassword',
-    loadChildren: () => import('./rpassword/rpassword.module').then( m => m.RpasswordPageModule)
+    loadChildren: () => import('./rpassword/rpassword.module').then( m => m.RpasswordPageModule),
+    canActivate: [NoIngresadoGuard]
   }
 ];
 
