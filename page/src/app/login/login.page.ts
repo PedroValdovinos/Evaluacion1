@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
+import { supabase } from '../services/supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController) { 
 
     this.formularioLogin = this.fb.group({
-      'nombre': new FormControl("",Validators.required),
+      'mail_duoc': new FormControl("",Validators.required),
       'password': new FormControl("",Validators.required)
     })
 
@@ -24,25 +25,29 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
+  async ingresar() {
+    const f = this.formularioLogin.value;
 
-  async ingresar(){
-    var f = this.formularioLogin.value;
+  
+    const { data: usuarios, error } = await supabase.from('usuario')
+      .select('mail_duoc, password')
+      .eq('mail_duoc', f.mail_duoc)
+      .eq('password', f.password);
 
-    var usuario = JSON.parse(localStorage.getItem('usuario')!);
-
-    if(usuario.nombre == f.nombre && usuario.password == f.password){
+    if (error) {
+      console.error('Error al consultar la base de datos:', error);
+    } else if (usuarios.length > 0) {
       console.log('Ingresado');
-      localStorage.setItem('ingresado','true');
+      localStorage.setItem('ingresado', 'true');
       this.navCtrl.navigateRoot('inicio');
-    }else{
+    } else {
       const alert = await this.alertController.create({
         header: 'ERROR',
         message: 'Usuario o Contraseña incorrectos',
         buttons: ['Aceptar']
       });
-  
+
       await alert.present();
     }
   }
-
 }

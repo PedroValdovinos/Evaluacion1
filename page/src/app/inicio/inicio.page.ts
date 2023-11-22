@@ -14,4 +14,12 @@ export class InicioPage implements OnInit {
     ngOnInit() {
   }
 
+  CerrarSesion() {
+
+    localStorage.removeItem('ingresado');
+    this.navCtrl.navigateRoot('login');
+  
+  }
+
+
 }

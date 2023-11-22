@@ -1,13 +1,97 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Conductor</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">conductor</ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  <ion-content class="ion-padding">
+    <ion-button color="boton" class="center" (click)="CerrarSesion()">
+        Cerrar Sesión
+      </ion-button>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="header">
+      <ion-title class="ion-text-center">Conductor</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/inicio"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content [fullscreen]="true">
+    <ion-card>
+      <ion-card-content>
+        <form [formGroup]="formularioViaje">
+          <h1 class="center">Informacion Viaje</h1>
+
+          <ion-item >
+            <ion-label class="center" position="floating">Origen</ion-label>
+            <ion-input formControlName="origen"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label class="center" position="floating">Destino</ion-label>
+            <ion-input formControlName="destino"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label class="center" position="floating">Fecha</ion-label>
+            <ion-input formControlName="fecha"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label class="center" position="floating">Hora</ion-label>
+            <ion-input formControlName="hora"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label class="center" position="floating">Costo</ion-label>
+            <ion-input formControlName="costo"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label class="center" position="floating">Asientos Disponibles</ion-label>
+            <ion-input formControlName="asiento_disponible"></ion-input>
+          </ion-item>
+
+          <br>
+          <br>
+
+            <h1 class="center">Informacion Auto</h1>
+
+            <ion-item>
+              <ion-label class="center" position="floating">Patente</ion-label>
+              <ion-input formControlName="patente"></ion-input>
+            </ion-item>
+  
+            <ion-item >
+              <ion-label class="center" position="floating">Marca</ion-label>
+              <ion-input formControlName="marca"></ion-input>
+            </ion-item>
+  
+            <ion-item >
+              <ion-label class="center" position="floating">Modelo</ion-label>
+              <ion-input formControlName="modelo"></ion-input>
+            </ion-item>
+  
+            <ion-item >
+              <ion-label class="center" position="floating">Color</ion-label>
+              <ion-input formControlName="color"></ion-input>
+            </ion-item>
+  
+          </form>
+        </ion-card-content>
+      </ion-card>
+
+    <ion-button (click)="setviaje()" color="boton" class="center">
+      Subir
+    </ion-button>
+
+  </ion-content>
