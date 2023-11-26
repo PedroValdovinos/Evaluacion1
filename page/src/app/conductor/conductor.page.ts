@@ -3,14 +3,22 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { AlertController, NavController } from '@ionic/angular';
 import { supabase } from '../services/supabase.service';
 
+interface Ruta  {
+  id: number;
+  latitud: string;
+  longitud: string;
+  nombre_ruta: string;
+}
+
+
 @Component({
   selector: 'app-conductor',
   templateUrl: './conductor.page.html',
   styleUrls: ['./conductor.page.scss'],
 })
 export class ConductorPage implements OnInit {
-
-  formularioViaje: FormGroup;
+  rutas: Ruta[] = []; 
+   formularioViaje: FormGroup;
 
   constructor(public fb: FormBuilder,
     public alertController: AlertController,
@@ -82,12 +90,23 @@ export class ConductorPage implements OnInit {
         });
         await alert.present();
       }
-    }
-  
+    }}
 
-  }
-  ngOnInit() {
-  }
+    async getRuta() {
+      const { data: rutaData, error: rutaError } = await supabase
+        .from('Ruta')
+        .select('*');
+    
+      if (rutaError) {
+        console.error('Error al obtener datos:', rutaError);
+      } else {
+        this.rutas = rutaData as Ruta[];
+      }
+    }
+    
+    ngOnInit() {
+      this.getRuta();
+    }
 
   CerrarSesion() {
 
