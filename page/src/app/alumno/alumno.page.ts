@@ -59,8 +59,9 @@ export class AlumnoPage implements OnInit {
       if (error) {
         console.error('Error al actualizar asientos disponibles:', error);
       }
-      
-      this.getviaje();
+  
+      // Redireccionar a la página de carga con la información del viaje
+      this.navCtrl.navigateForward(['/carga', { viajeId: viaje1.id }]);
     }
   }
   

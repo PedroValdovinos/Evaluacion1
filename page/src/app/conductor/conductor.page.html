@@ -31,14 +31,18 @@
         <form [formGroup]="formularioViaje">
           <h1 class="center">Informacion Viaje</h1>
 
-          <ion-item >
+          <ion-item>
             <ion-label class="center" position="floating">Origen</ion-label>
-            <ion-input formControlName="origen"></ion-input>
+            <ion-select formControlName="origen">
+              <ion-select-option *ngFor="let ruta of rutas" [value]="ruta.id">{{ ruta.nombre_ruta }}</ion-select-option>
+            </ion-select>
           </ion-item>
-
-          <ion-item >
+          
+          <ion-item>
             <ion-label class="center" position="floating">Destino</ion-label>
-            <ion-input formControlName="destino"></ion-input>
+            <ion-select formControlName="destino">
+              <ion-select-option *ngFor="let ruta of rutas" [value]="ruta.id">{{ ruta.nombre_ruta }}</ion-select-option>
+            </ion-select>
           </ion-item>
 
           <ion-item >

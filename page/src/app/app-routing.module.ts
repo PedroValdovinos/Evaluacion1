@@ -49,9 +49,9 @@ const routes: Routes = [
     loadChildren: () => import('./viaje/viaje.module').then( m => m.ViajePageModule)
   },
   {
-    path: 'carga',
+    path: 'carga/:viajeId',
     loadChildren: () => import('./carga/carga.module').then( m => m.CargaPageModule)
-  }
+  },
 ];
 
 @NgModule({
