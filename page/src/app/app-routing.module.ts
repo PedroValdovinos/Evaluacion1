@@ -49,7 +49,7 @@ const routes: Routes = [
     loadChildren: () => import('./viaje/viaje.module').then( m => m.ViajePageModule)
   },
   {
-    path: 'carga/:viajeId',
+    path: 'carga',
     loadChildren: () => import('./carga/carga.module').then( m => m.CargaPageModule)
   },
 ];

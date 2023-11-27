@@ -1,20 +1,27 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Carga Page</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
 
-<ion-content>
-  <!-- Muestra la información del viaje -->
-  <ion-card>
-    <ion-card-header>
-     <h1>ñ</h1>
+  <ion-card *ngIf="viaje">
+    <ion-card-header  class="center" color="boton">
+     <h1> {{ viaje.origen }} a {{ viaje.destino }}</h1> 
     </ion-card-header>
+
     <ion-card-content>
-      <!-- Muestra otros detalles del viaje -->
-    </ion-card-content>
+      <br>
+      <h1>Fecha: {{ viaje.fecha }}</h1>
+      <h1>Hora de Salida: {{ viaje.hora }}</h1>
+      <br>
+        <h1>
+        Información Vehiculo
+      </h1>
+      <br>
+      <h1>{{ viaje.marca }} {{ viaje.modelo }}</h1>
+      <h1>Patente: {{ viaje.patente }}</h1>
+      <h1>Color: {{ viaje.color }}</h1>
+      </ion-card-content>
   </ion-card>
+  <br>
+  <br>
+  <p>Esperando completar los asientos disponibles</p>
 
-  <!-- Otros elementos de la página de carga -->
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
 </ion-content>
-

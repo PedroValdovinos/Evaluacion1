@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { supabase } from '../services/supabase.service';
 import { Time } from '@angular/common';
+import { Router } from '@angular/router';
 
-interface Viaje {
+export interface Viaje {
   id: number;
   origen: string;
   destino: string;
@@ -27,7 +28,8 @@ export class AlumnoPage implements OnInit {
   
   viajes: Viaje[] = [];
 
-  constructor (public navCtrl: NavController) {
+  constructor (public navCtrl: NavController,
+               public router:Router) {
     this.getviaje();
    }
 
@@ -46,22 +48,28 @@ export class AlumnoPage implements OnInit {
 
     }
   }
+
   async restarAsiento(viaje1: Viaje) {
     if (viaje1.asiento_disponible > 0) {
       viaje1.asiento_disponible -= 1;
-  
+
       let estado = viaje1.asiento_disponible > 0; 
       const { error } = await supabase
         .from('viaje')
         .update({ asiento_disponible: viaje1.asiento_disponible, estado: estado })
         .eq('id', viaje1.id);
-  
-      if (error) {
-        console.error('Error al actualizar asientos disponibles:', error);
+        
+        if (error) {
+          console.error('Error al actualizar asientos disponibles:', error);
+        }
+
+      if (viaje1.asiento_disponible === 0) {
+        this.navCtrl.navigateForward(['/viaje']);
+      } else {
+        this.router.navigate(['/carga'], {
+          queryParams: { viaje: JSON.stringify(viaje1) },
+        });
       }
-  
-      // Redireccionar a la página de carga con la información del viaje
-      this.navCtrl.navigateForward(['/carga', { viajeId: viaje1.id }]);
     }
   }
   
