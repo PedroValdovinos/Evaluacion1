@@ -14,7 +14,7 @@ export class ViajePage implements OnInit {
   mapRef: ElementRef;
 
   constructor() {
-    this.mapRef = new ElementRef(null);  // Puedes inicializarlo con null o con el valor deseado
+    this.mapRef = new ElementRef(null);
   }
 
   ionViewDidEnter() {
@@ -22,7 +22,7 @@ export class ViajePage implements OnInit {
   }
 
   async createMap() {
-    // Verifica que mapRef.nativeElement es un elemento DOM válido
+
     console.log(this.mapRef.nativeElement);
 
     if (this.mapElement && this.mapElement.nativeElement) {
@@ -44,7 +44,6 @@ export class ViajePage implements OnInit {
   }
   
   ngOnInit() {
-    // Agrega lógica de inicialización si es necesaria
   }
 
 }
