@@ -20,7 +20,7 @@ export interface Viaje {
 }
 
 @Component({
-  selector: 'app-alumno',
+  selector: 'app-alumno', 
   templateUrl: './alumno.page.html',
   styleUrls: ['./alumno.page.scss'],
 })
@@ -66,9 +66,10 @@ export class AlumnoPage implements OnInit {
       if (viaje1.asiento_disponible === 0) {
         this.navCtrl.navigateForward(['/viaje']);
       } else {
-        this.router.navigate(['/carga'], {
+        
+        /*this.router.navigate(['/carga'], {
           queryParams: { viaje: JSON.stringify(viaje1) },
-        });
+        });*/
       }
     }
   }

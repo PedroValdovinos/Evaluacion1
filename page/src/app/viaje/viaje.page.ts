@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { GoogleMap } from '@capacitor/google-maps';
+import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -35,13 +35,38 @@ export class ViajePage implements OnInit {
             lat: -33.03350031485377,
             lng: -71.53312509139612,
           },
-          zoom: 8,
+          zoom: 12,
         }
       });
+      this.addMarkers();
     } else {
       console.error('Elemento del mapa no es un elemento DOM válido');
     }
   }
+
+  async addMarkers() {
+    const markers: Marker[] = [
+      {
+        coordinate: {
+          lat: -33.03350031485377,
+          lng: -71.53312509139612,
+        },
+        title: 'DuocUC Viña Del Mar',
+        snippet: 'DuocUC Viña Del Mar',
+      },
+      {
+        coordinate: {
+          lat: -33.06021403096869,
+          lng: -71.42081908962844,
+        },
+        title: 'Casa',
+        snippet: 'Casa',
+      },
+    ];
+  
+    await this.map?.addMarkers(markers);
+  }
+  
   
   ngOnInit() {
   }
